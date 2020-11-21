@@ -1,0 +1,52 @@
+<SearchInput></SearchInput>
+<Tabs tabs="{{tabs}}" bindtabsItemChange="handleItemChange">
+    <block wx:if="{{tabs[0].isActive}}">
+        <view class="first_tab">
+            <navigator class="goods_item"
+            wx:for="{{goodsList}}"
+            wx:key="goods_id"
+            >
+                <!-- 左侧图片容器 -->
+                <view class="goods_img_wrap">
+                    <image src="{{item.goods_small_logo?item.goods_small_logo:'../../icons/cart.png'}}" mode="widthFix"></image>
+                </view>
+                <!-- 右侧商品容器 -->
+                <view class="goods_info_wrap">
+                    <view class="goods_name">{{item.goods_name}}</view>
+                    <view class="goods_price">￥{{item.goods_price}}</view>
+                </view>
+            </navigator>
+        </view>
+        
+    </block>
+    <block wx:elif="{{tabs[1].isActive}}">
+        <view class="second_tab">
+            <navigator class="goods_item">
+                <!-- 左侧图片容器 -->
+                <view class="goods_img_wrap">
+                    <image src="../../icons/cart.png" mode="widthFix"></image>
+                </view>
+                <!-- 右侧商品容器 -->
+                <view class="goods_info_wrap">
+                    <view class="goods_name">海尔</view>
+                    <view class="goods_price">1231</view>
+                </view>
+            </navigator>
+        </view>
+    </block>
+    <block wx:elif="{{tabs[2].isActive}}">
+        <view class="third_tab">
+            <navigator class="goods_item">
+                <!-- 左侧图片容器 -->
+                <view class="goods_img_wrap">
+                    <image src="../../icons/cart.png" mode="widthFix"></image>
+                </view>
+                <!-- 右侧商品容器 -->
+                <view class="goods_info_wrap">
+                    <view class="goods_name">海尔</view>
+                    <view class="goods_price">1231</view>
+                </view>
+            </navigator>
+        </view>
+    </block>
+</Tabs>
