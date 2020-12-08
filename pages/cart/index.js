@@ -1,11 +1,14 @@
-// pages/cart/index.js
+import{
+  chooseAddress
+} from "../../utils/asyncWx";
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    address:{}
   },
 
   /**
@@ -26,6 +29,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //获取缓存中的收货地址信息
+    let address = wx.getStorageSync("address");
+    address.all = address.provinceName+address.cityName+address.countyName+address.detailInfo;
+    //给data赋值
+    this.setData({
+      address
+    });
 
   },
 
@@ -62,5 +72,16 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  //点击收货地址
+  async handleChooseAddress() {
+    //scope.address现在默认为true不用判断，pc微信开发工具有问题，用手机真机调试即可
+    try {
+      const address = await chooseAddress();
+      wx.setStorageSync("address", address);
+      
+    } catch (error) {
+      console.log(error);
+    }
   }
 })

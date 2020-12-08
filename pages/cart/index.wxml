@@ -1,2 +1,99 @@
-<!--pages/cart/index.wxml-->
-<text>pages/cart/index.wxml</text>
+<!-- pages/cart/index.wxml -->
+<!-- 收货地址 -->
+<view class="revice_address_row">
+    <!-- 当收获地址不存在时 不显示按钮 -->
+    <view class="address_btn" wx:if="{{!address.userName}}">
+        <button bindtap="handleChooseAddress" type="primary" plain>获取收货地址</button>
+    </view>
+    <!-- 当收获地址存在时，显示详细信息 -->
+    <view wx:else class="user_info_row">
+        <view class="user_info">
+            <view>{{address.userName}}</view>
+            <view>{{address.all}}</view>
+        </view>
+        <view class="user_phone">{{address.telNumber}}</view>
+    </view>
+</view>
+
+<!-- 购物车内容 -->
+<view class="cart_content">
+    <view class="cart_titile">购物车</view>
+    <view class="cart_main">
+        <view class="cart_item">
+            <!-- 复选框 -->
+            <view class="cart_chk_wrap">
+                <checkbox-group bindchange="">
+                    <checkbox></checkbox>
+                </checkbox-group>
+            </view>
+            <!-- 商品图片 -->
+            <navigator class="cart_img_wrap">
+                <image src="../../icons/cart.png" mode="widthFix"></image>
+            </navigator>
+            <!-- 商品信息 -->
+            <view class="cart_info_wrap">
+                <view class="goods_name">tcl fasd 2342 asdf 收到货发士大夫</view>
+                <view class="goods_price_wrap">
+                    <view class="goods_price">￥234324</view>
+                    <view class="cart_num_tool">
+                        <view class="num_edit">-</view>
+                        <view class="goods_num">10</view>
+                        <view class="num_edit">+</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="cart_main">
+        <view class="cart_item">
+            <!-- 复选框 -->
+            <view class="cart_chk_wrap">
+                <checkbox-group bindchange="">
+                    <checkbox></checkbox>
+                </checkbox-group>
+            </view>
+            <!-- 商品图片 -->
+            <navigator class="cart_img_wrap">
+                <image src="../../icons/cart.png" mode="widthFix"></image>
+            </navigator>
+            <!-- 商品信息 -->
+            <view class="cart_info_wrap">
+                <view class="goods_name">tcl fasd 2342 asdf 收到货发士大夫</view>
+                <view class="goods_price_wrap">
+                    <view class="goods_price">￥234324</view>
+                    <view class="cart_num_tool">
+                        <view class="num_edit">-</view>
+                        <view class="goods_num">10</view>
+                        <view class="num_edit">+</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="cart_main">
+        <view class="cart_item">
+            <!-- 复选框 -->
+            <view class="cart_chk_wrap">
+                <checkbox-group bindchange="">
+                    <checkbox></checkbox>
+                </checkbox-group>
+            </view>
+            <!-- 商品图片 -->
+            <navigator class="cart_img_wrap">
+                <image src="../../icons/cart.png" mode="widthFix"></image>
+            </navigator>
+            <!-- 商品信息 -->
+            <view class="cart_info_wrap">
+                <view class="goods_name">tcl fasd 2342 asdf 收到货发士大夫</view>
+                <view class="goods_price_wrap">
+                    <view class="goods_price">￥234324</view>
+                    <view class="cart_num_tool">
+                        <view class="num_edit">-</view>
+                        <view class="goods_num">10</view>
+                        <view class="num_edit">+</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
