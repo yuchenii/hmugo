@@ -102,6 +102,7 @@ Page({
     if(index===-1){
       //不存在
       this.GoodsInfo.num=1;
+      this.GoodsInfo.checked=true;
       cart.push(this.GoodsInfo);
     }else{
       //已存在加一
