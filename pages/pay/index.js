@@ -23,7 +23,6 @@ Page({
     this.setData({
       address
     });
-
     //总价格 数量
     let totalPrice = 0;
     let totalNum = 0;
@@ -33,7 +32,6 @@ Page({
         totalNum += v.num;
       
     });
-  
     this.setData({
       cart,
       totalPrice,
@@ -41,5 +39,20 @@ Page({
       address
     });
     
+  },
+
+  // 支付需要企业账号
+  // 点击 支付
+  handleOrderPay(){
+    // 判断缓存中有没有token
+    const token = wx.getStorageSync("token");
+    // 判断
+    if(!token){
+      wx.navigateTo({
+        url: '/pages/auth/index',
+      });
+      return;
+    }
+    console.log("token已存在");
   }
 })
