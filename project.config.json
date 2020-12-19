@@ -2,7 +2,7 @@
   "description": "项目配置文件",
   "packOptions": {
     "ignore": []
-  }, 
+  },
   "setting": {
     "urlCheck": true,
     "es6": true,
@@ -84,6 +84,11 @@
           "name": "cart",
           "pathName": "pages/cart/index",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "支付",
+          "pathName": "pages/pay/index",
           "scene": null
         }
       ]
