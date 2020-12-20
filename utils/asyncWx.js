@@ -38,7 +38,9 @@ export const openSetting = () => {
     })
 }
 //promise 形式 showModal
-export const showModal = ({content}) => {
+export const showModal = ({
+    content
+}) => {
     return new Promise((resolve, reject) => {
         wx.showModal({
             title: '提示',
@@ -53,7 +55,9 @@ export const showModal = ({content}) => {
     })
 }
 //promise 形式 showToast
-export const showToast = ({title}) => {
+export const showToast = ({
+    title
+}) => {
     return new Promise((resolve, reject) => {
         wx.showToast({
             title: title,
@@ -71,7 +75,7 @@ export const showToast = ({title}) => {
 export const login = () => {
     return new Promise((resolve, reject) => {
         wx.login({
-            timeout:10000,
+            timeout: 10000,
             success: (result) => {
                 resolve(result);
             },
@@ -79,5 +83,19 @@ export const login = () => {
                 reject(err);
             }
         })
+    })
+}
+//promise 形式 requestPayment
+export const requestPayment = (pay) => {
+    return new Promise((resolve, reject) => {
+        wx.requestPayment({
+            ...pay,
+            success: (result) => {
+                resolve(result)
+            },
+            fail: (err) => {
+                reject(err);
+            }
+        });
     })
 }
