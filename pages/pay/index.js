@@ -71,6 +71,8 @@ Page({
       const { pay } = await request({ url: "/my/orders/req_unifiedorder", method: "POST", data: { order_number } });
       // 6 发起微信支付 
       console.log(pay);
+      
+      // 用的文档中的token APPID不一致 会报错
       await requestPayment(pay);
       // 7 查询后台 订单状态
       const res = await request({ url: "/my/orders/chkOrder", method: "POST", data: { order_number } });
