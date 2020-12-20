@@ -101,6 +101,12 @@
         {
           "name": "登录页面",
           "pathName": "pages/login/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "个人中心",
+          "pathName": "pages/user/index",
           "scene": null
         }
       ]
