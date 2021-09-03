@@ -21,14 +21,15 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
-    "useMultiFrameRuntime": false,
+    "useMultiFrameRuntime": true,
     "useApiHook": true,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
-    "bundle": false,
+    "enableEngineNative": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
@@ -40,7 +41,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.14.0",
   "appid": "wx95c34c97d459e998",
-  "projectname": "Demo",
+  "projectname": "hmugo",
   "debugOptions": {
     "hidedInDevtools": []
   },
