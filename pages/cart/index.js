@@ -1,7 +1,7 @@
 import{
   chooseAddress, showModal, showToast
 } from "../../utils/asyncWx";
-
+import regeneratorRuntime from '../../lib/runtime/runtime';
 Page({
   data: {
     address:{},
