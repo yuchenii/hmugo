@@ -9,14 +9,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-      goodsObj:{}
+      goodsObj:{},
+      isCollect: false
   },
 
   GoodsInfo:{},
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onShow: function () {
+    let pages = getCurrentPages();
+    let currentPage = pages[pages.length - 1];
+    let options = currentPage.options;
+    // console.log(options);
     const {goods_id}=options;
     this.getGoodsDetail(goods_id);
 
@@ -26,6 +31,11 @@ Page({
   async getGoodsDetail(goods_id){
       const goodsObj = await request({url:"/goods/detail",data:{goods_id}});
       this.GoodsInfo = goodsObj;
+      // 获取缓存中的商品收藏数组
+      let collect = wx.getStorageSync("collect") || [];
+      // 判断是否被收藏
+      let isCollect = collect.some(v => v.goods_id === this.GoodsInfo.goods_id);
+
       this.setData({
         goodsObj:{
           goods_name:goodsObj.goods_name,
@@ -33,9 +43,43 @@ Page({
           //iphone部分手机不支持webp图片格式
           goods_introduce:goodsObj.goods_introduce.replace(/\.webp/g,'.jpg'),
           pics:goodsObj.pics
-        }
+        },
+        isCollect: isCollect,
       })
 
+  },
+
+  // 收藏
+  handleCollect(){
+    let isCollect=false;
+     // 获取缓存中的商品收藏数组
+     let collect = wx.getStorageSync("collect") || [];
+     // 判断是否被收藏
+     let index = collect.findIndex(v => v.goods_id === this.GoodsInfo.goods_id);
+     // index !==-1表示被收藏过了
+     if(index !==-1){
+       collect.splice(index,1);
+       isCollect = false;
+       wx.showToast({
+        title: '取消成功',
+        icon: 'success',
+        mask: true
+      });
+
+     }else{
+       collect.push(this.GoodsInfo);
+       isCollect=true;
+       wx.showToast({
+        title: '收藏成功',
+        icon: 'success',
+        mask: true
+      });
+
+     }
+     wx.setStorageSync("collect", collect);
+     this.setData({
+       isCollect: isCollect
+     });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -43,14 +87,7 @@ Page({
   onReady: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
+  
   /**
    * 生命周期函数--监听页面隐藏
    */
