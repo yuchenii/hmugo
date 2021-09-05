@@ -9,7 +9,7 @@
            wx:for="{{swiperList}}"
            wx:key="goods_id"
            > 
-               <navigator>
+               <navigator url="{{'/pages/goods_detail/index?goods_id='+item.goods_id}}">
                    <image src="{{item.image_src}}" mode="widthFix">     
                    </image>
                </navigator>
@@ -22,6 +22,8 @@
        <navigator
        wx:for="{{catesList}}"
        wx:key="name"
+       url="/pages/category/index"
+       open-type="switchTab"
        >
            <image mode="widthFix" src="{{item.image_src}}">
                
@@ -50,6 +52,7 @@
                wx:for-item="item2"
                wx:for-index="index2"
                wx:key="name"
+               url="{{m1.getUrl(item2.navigator_url)}}"
                >
                    <image src="{{item2.image_src}}" mode="{{index2===0?'widthFix':'scaleToFill'}}">
                        
@@ -60,3 +63,10 @@
    </view>
    <!-- 楼层结束 -->
 </view>
+
+<wxs module="m1">
+    var getUrl = function(str){
+        return '/pages/goods_list/index?'+str.split('?')[1];
+    }
+    module.exports.getUrl = getUrl;
+</wxs>
