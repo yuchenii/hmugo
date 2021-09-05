@@ -1,12 +1,58 @@
 // pages/search/index.js
+import {
+  request
+} from "../../request/index.js";
+import regeneratorRuntime from '../../lib/runtime/runtime';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    goods:[],
+    isFocus: false,
+    inpValue:""
   },
+
+  handleInput(e){
+    const {value} = e.detail;
+
+    if(!value.trim()){
+      this.setData({
+        goods:[],
+        isFocus:false
+      });
+      return;
+    }
+    
+    this.setData({
+      isFocus: true
+    });
+
+    // 防抖
+    clearTimeout(this.TimeId);
+    this.TimeId = setTimeout(() =>{
+      this.qsearch(value);
+    }, 1000);
+    
+  },
+
+  handleCancle(){
+    this.setData({
+      isFocus:false,
+      goods:[],
+      inpValue:""
+    });
+  },
+
+  async qsearch(query){
+    const res = await request({url:"/goods/qsearch",data:{query}});
+    this.setData({
+      goods: res
+    });
+  },
+
+
 
   /**
    * 生命周期函数--监听页面加载
